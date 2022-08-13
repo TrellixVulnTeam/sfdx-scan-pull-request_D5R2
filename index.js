@@ -118,8 +118,21 @@ function performStaticCodeAnalysisOnFilesInDiff() {
   console.log(
     "Performing static code analysis on all of the files in the difference..."
   );
+  let sfdxCliPath = path.join(
+    "home",
+    "runner",
+    "work",
+    "_actions",
+    "mitchspano",
+    "sfdx-scan-pull-request",
+    "*",
+    "node_modules",
+    "sfdx-cli",
+    "bin",
+    "run"
+  );
   execSync(
-    `node_modules/sfdx-cli/bin/run scanner:run ${this.scannerCliArgs} \
+    `${sfdxCliPath} scanner:run ${this.scannerCliArgs} \
     --format json \
     --target "${TEMP_DIR_NAME}" \
     --outfile "${FINDINGS_OUTPUT}"`
